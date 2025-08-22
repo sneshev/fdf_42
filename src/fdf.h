@@ -7,7 +7,7 @@
 #include <fcntl.h>
 #include <math.h>
 #include "../libft/libft.h"
-#include "../libft/ft_printf/ft_printf.h"
+#include "ft_printf/ft_printf.h"
 #include "gnl/get_next_line.h"
 
 
