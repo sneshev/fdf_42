@@ -16,8 +16,7 @@ libft:
 	@[ -d "$(LIBFT_PATH)" ] || git clone $(LIBFT) $(LIBFT_PATH);
 	@cd $(LIBFT_PATH) && make 
 
-SRCS = $(shell find src -type f -name '*.c') \
-	   $(shell find libft/ft_printf -type f -name '*.c')
+SRCS = $(shell find src -type f -name '*.c') 
 OBJS_DIR = obj
 OBJS = $(patsubst %.c,$(OBJS_DIR)/%.o,$(SRCS))
 
