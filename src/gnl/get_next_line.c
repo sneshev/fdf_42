@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stefuntu <stefuntu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sneshev <sneshev@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:12:53 by sneshev           #+#    #+#             */
-/*   Updated: 2025/08/22 12:06:28 by stefuntu         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:04:38 by sneshev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char	*ret(char *line, char **red, char **saved, int bytes_red)
 	else
 	{
 		nlen = find_nl(line);
-		nline = ft_substr(line, 0, find_nl(line) - 1);
+		nline = ft_substr(line, 0, find_nl(line));
 		*saved = ft_substr(line, nlen, ft_strlen(line) - nlen);
 		return (free (line), nline);
 	}
