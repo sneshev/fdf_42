@@ -28,18 +28,6 @@ static char	*fetch_rawmap(char *file_name)
 	return (map);
 }
 
-char **fetch_map(char *file_name)
-{
-	char *rawmap;
-	rawmap = fetch_rawmap(file_name);
-	if (!rawmap)
-		return (NULL);
-	char **map;
-	map = ft_split(rawmap, '\n');
-	free(rawmap);
-	return (map);
-}
-
 static bool	only_valid(char *rawmap)
 {
 	while (*rawmap)

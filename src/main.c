@@ -5,7 +5,7 @@ int	main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 	char **map;
-	map = fetch_map("maps/valid0.fdf");
+	map = get_map("maps/valid0.fdf");
 	if (!map)
 	{
 		ft_printf("Error: failed to fetch map\n");

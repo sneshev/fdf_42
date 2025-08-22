@@ -12,7 +12,7 @@
 #include "gnl/get_next_line.h"
 
 
-char	**fetch_map(char *file_name);
+char **get_map(char *file_name);
 
 // utils
 bool	is_space(char c);
