@@ -4,7 +4,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	char **map;
+	t_map *map;
 	map = get_map("maps/valid0.fdf");
 	if (!map)
 	{
@@ -12,7 +12,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	print_map(map);
-	free_arr(map);
+	free_map(&map);
 	return (0);
 }
 
