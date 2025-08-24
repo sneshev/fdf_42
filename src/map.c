@@ -1,5 +1,8 @@
 #include "fdf.h"
 
+bool	is_valid_map(char **map);
+
+
 static char	*fetch_rawmap(char *file_name)
 {
 	int		fd;
@@ -26,12 +29,6 @@ static char	*fetch_rawmap(char *file_name)
 	}
 	close(fd);
 	return (map);
-}
-
-static bool	is_valid_map(char **map)
-{
-	(void)map;
-	return (true);
 }
 
 static int	**ctoi_map(char **map, int *width, int height)
@@ -77,8 +74,10 @@ static int	count_numbers(char *line)
 			line++;
 		if (*line == '\0')
 			break ;
-		if (ft_isdigit(*line))
+		if (ft_isdigit(*line) || (*line == '-' && ft_isdigit(*(line + 1))))
 			count++;
+		if (*line == '-')
+			line++;
 		while (ft_isdigit(*line))
 			line++;
 	}
