@@ -28,22 +28,6 @@ static char	*fetch_rawmap(char *file_name)
 	return (map);
 }
 
-static bool	only_valid(char *rawmap)
-{
-	while (*rawmap)
-	{
-		if (*rawmap == '\n')
-			rawmap++;
-		else if (is_space(*rawmap))
-			rawmap++;
-		else if (ft_isdigit(*rawmap))
-			rawmap++;
-		else
-			return (false);
-	}
-	return (true);
-}
-
 static bool	is_valid_map(char **map)
 {
 	(void)map;
@@ -58,8 +42,6 @@ char **get_map(char *file_name)
 	rawmap = fetch_rawmap(file_name);
 	if (!rawmap)
 		return (NULL);
-	if (!only_valid(rawmap))
-		return (ft_printf("Error: invalid map\n"), free(rawmap), NULL);
 	map = ft_split(rawmap, '\n');
 	free(rawmap);
 	if (!map)

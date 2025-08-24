@@ -12,7 +12,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	print_map(map);
-	free(map);
+	free_arr(map);
 	return (0);
 }
 
