@@ -2,17 +2,27 @@
 
 bool	is_valid_map(char **map);
 
+static char	*get_filename(char *file_name)
+{
+	if (ft_strncmp(file_name, "maps/", 5) == 0)
+		return (ft_strdup(file_name));
+	return (ft_strjoin("maps/", file_name));
+}
 
-static char	*fetch_rawmap(char *file_name)
+static char	*fetch_rawmap(char *filename)
 {
 	int		fd;
 	char	*map;
 	char	*tmp;
 	char	*line;
 
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
+	filename = get_filename(filename);
+	if (!filename)
 		return (NULL);
+	fd = open(filename, O_RDONLY);
+	free(filename);
+	if (fd == -1)
+		return (ft_error("failed to open file"), NULL);
 	line = get_next_line(fd);
 	if (!line)
 		return (close(fd), NULL);
@@ -31,7 +41,7 @@ static char	*fetch_rawmap(char *file_name)
 	return (map);
 }
 
-static t_point	**ctoi_map(char **map, int *width, int height)
+static t_point	**ctot_map(char **map, int *width, int height)
 {
 	t_point **points;
 	char *line;
@@ -101,16 +111,16 @@ t_map *create_map_struct(char **map_arr)
 		map->height++;
 	map->width = malloc(sizeof(int) * map->height);
 	if (!map->width)
-		return (free(map), NULL);
+		return (free_map(&map), free_arr(map_arr), NULL);
 	i = 0;
 	while (i < map->height)
 	{
 		map->width[i] = count_numbers(map_arr[i]);
 		i++;
 	}
-	map->points = ctoi_map(map_arr, map->width, map->height);
+	map->points = ctot_map(map_arr, map->width, map->height);
 	if (!map->points)
-		return (free(map), NULL);
+		return (free_map(&map), free_arr(map_arr), NULL);
 	return (map);
 }
 
@@ -125,8 +135,8 @@ t_map *get_map(char *file_name)
 	map = ft_split(rawmap, '\n');
 	free(rawmap);
 	if (!map)
-		return (ft_printf("malloc err"), NULL);
+		return (ft_error("malloc error"), NULL);
 	if (!is_valid_map(map))
-		return (ft_printf("Error: invalid map\n"), free_arr(map), NULL);
+		return (ft_error("invalid map"), free_arr(map), NULL);
 	return (create_map_struct(map));
 }

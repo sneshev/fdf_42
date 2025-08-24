@@ -48,11 +48,3 @@ bool	is_positive_int(char *str)
 	}
 	return (true);
 }
-
-void	free_map(t_map **map)
-{
-	free_points((*map)->points, (*map)->height);
-	free((*map)->width);
-	free(*map);
-	*map = NULL;
-}

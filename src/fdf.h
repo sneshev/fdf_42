@@ -33,13 +33,16 @@ t_map *get_map(char *file_name);
 
 // utils
 bool	is_space(char c);
-void	free_arr(char **arr);
-void	free_points(t_point **points, int height);
 bool	is_number(char *str);
 bool	is_positive_int(char *str);
+int		ft_error(char *str);
 
 // helpers
 void	print_map(t_map *map);
+
+// freeing
+void	free_arr(char **arr);
 void	free_map(t_map **map);
+void	free_points(t_point **points, int height);
 
 #endif
