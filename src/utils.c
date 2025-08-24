@@ -7,36 +7,6 @@ bool	is_space(char c)
 	return (false);
 }
 
-void	free_arr(char **arr)
-{
-	int	i;
-
-	if (!arr)
-		return ;
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
-void	free_irr(int **arr, int height)
-{
-	int	i;
-
-	if (!arr)
-		return ;
-	i = 0;
-	while (i < height)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
 bool	is_number(char *str)
 {
 	while (*str == '+')
@@ -81,7 +51,7 @@ bool	is_positive_int(char *str)
 
 void	free_map(t_map **map)
 {
-	free_irr((*map)->map, (*map)->height);
+	free_points((*map)->points, (*map)->height);
 	free((*map)->width);
 	free(*map);
 	*map = NULL;

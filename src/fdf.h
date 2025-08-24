@@ -12,11 +12,21 @@
 #include "ft_printf/ft_printf.h"
 #include "gnl/get_next_line.h"
 
+#define WIDTH 500
+#define HEIGHT 500
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_point;
+
 typedef struct s_map
 {
-	int **map;
-	int *width;
-	int height;
+	t_point	**points;
+	int		*width;
+	int		height;
 }	t_map;
 
 t_map *get_map(char *file_name);
@@ -24,7 +34,7 @@ t_map *get_map(char *file_name);
 // utils
 bool	is_space(char c);
 void	free_arr(char **arr);
-void	free_irr(int **arr, int height);
+void	free_points(t_point **points, int height);
 bool	is_number(char *str);
 bool	is_positive_int(char *str);
 

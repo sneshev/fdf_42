@@ -31,36 +31,38 @@ static char	*fetch_rawmap(char *file_name)
 	return (map);
 }
 
-static int	**ctoi_map(char **map, int *width, int height)
+static t_point	**ctoi_map(char **map, int *width, int height)
 {
-	int **int_map;
+	t_point **points;
 	char *line;
 	int i;
 	int j;
 
 	i = 0;
-	int_map = malloc(sizeof(int *) * height);
-	if (!int_map)
+	points = malloc(sizeof(t_point *) * height);
+	if (!points)
 		return (free_arr(map), NULL);
 	while (map[i])
 	{
 		j = 0;
-		int_map[i] = malloc(sizeof(int) * width[i]);
-		if (!int_map[i])
-			return (free_irr(int_map, i), free_arr(map), NULL);			
+		points[i] = malloc(sizeof(t_point) * width[i]);
+		if (!points[i])
+			return (free_points(points, i), free_arr(map), NULL);			
 		line = map[i];
 		while (j < width[i])
 		{
 			while (is_space(*line))
 				line++;
-			int_map[i][j] = ft_atoi(line);
+			points[i][j].x = j;
+			points[i][j].y = i;
+			points[i][j].z = ft_atoi(line);
 			while (ft_isdigit(*line) || *line == '-')
 				line++;
 			j++;
 		}
 		i++;
 	}
-	return (free_arr(map), int_map);
+	return (free_arr(map), points);
 }
 
 static int	count_numbers(char *line)
@@ -106,8 +108,8 @@ t_map *create_map_struct(char **map_arr)
 		map->width[i] = count_numbers(map_arr[i]);
 		i++;
 	}
-	map->map = ctoi_map(map_arr, map->width, map->height);
-	if (!map->map)
+	map->points = ctoi_map(map_arr, map->width, map->height);
+	if (!map->points)
 		return (free(map), NULL);
 	return (map);
 }

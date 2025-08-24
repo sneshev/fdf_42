@@ -32,8 +32,8 @@ int	find_max_digits(t_map *map)
 		j = 0;
 		while (j < map->width[i])
 		{
-			if (ft_nbrlen(map->map[i][j]) > max_digits)
-				max_digits = ft_nbrlen(map->map[i][j]);
+			if (ft_nbrlen(map->points[i][j].z) > max_digits)
+				max_digits = ft_nbrlen(map->points[i][j].z);
 			j++;
 		}
 		i++;
@@ -56,10 +56,10 @@ void	print_colored_num(t_map *map, int num)
 		j = 0;
 		while (j < map->width[i])
 		{
-			if (map->map[i][j] < min)
-				min = map->map[i][j];
-			if (map->map[i][j] > max)
-				max = map->map[i][j];
+			if (map->points[i][j].z < min)
+				min = map->points[i][j].z;
+			if (map->points[i][j].z > max)
+				max = map->points[i][j].z;
 			j++;
 		}
 		i++;
@@ -85,10 +85,10 @@ void	print_map(t_map *map)
 		j = 0;
 		while (j < map->width[i])
 		{
-			digits = ft_nbrlen(map->map[i][j]);
+			digits = ft_nbrlen(map->points[i][j].z);
 			while (digits++ < max_digits)
 				ft_printf(" ");
-			print_colored_num(map, map->map[i][j]);
+			print_colored_num(map, map->points[i][j].z);
 			j++;
 		}
 		ft_printf("\n");
