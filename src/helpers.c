@@ -10,8 +10,8 @@ int	ft_nbrlen(int n)
 			return (11);
 		return (ft_nbrlen(-n) + 1);
 	}
-	len = 0;
-	while (n > 0)
+	len = 1;
+	while (n >= 10)
 	{
 		n /= 10;
 		len++;
@@ -41,11 +41,38 @@ int	find_max_digits(t_map *map)
 	return (max_digits);
 }
 
+void	print_colored_num(t_map *map, int num)
+{
+	int min;
+	int max;
+	int i;
+	int j;
+
+	min = INT_MAX;
+	max = INT_MIN;
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			if (map->map[i][j] < min)
+				min = map->map[i][j];
+			if (map->map[i][j] > max)
+				max = map->map[i][j];
+			j++;
+		}
+		i++;
+	}
+	ft_printf("\033[%dm%d \033[0m", 31 + (int)((num - min) * 5.0 / (max - min)), num);
+}
+
 void	print_map(t_map *map)
 {
 	int i;
 	int j;
 	int max_digits;
+	int	digits;
 
 	if (!map)
 		return ;
@@ -58,7 +85,10 @@ void	print_map(t_map *map)
 		j = 0;
 		while (j < map->width)
 		{
-			ft_printf("%d ", map->map[i][j]);
+			digits = ft_nbrlen(map->map[i][j]);
+			while (digits++ < max_digits)
+				ft_printf(" ");
+			print_colored_num(map, map->map[i][j]);
 			j++;
 		}
 		ft_printf("\n");
