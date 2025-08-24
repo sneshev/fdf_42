@@ -15,7 +15,7 @@
 typedef struct s_map
 {
 	int **map;
-	int width;
+	int *width;
 	int height;
 }	t_map;
 

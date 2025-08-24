@@ -34,13 +34,7 @@ static bool	is_valid_map(char **map)
 	return (true);
 }
 
-static int	**ctoi_map_ret(char **map, int **int_map)
-{
-	free_arr(map);
-	return (int_map);
-}
-
-static int	**ctoi_map(char **map, int width, int height)
+static int	**ctoi_map(char **map, int *width, int height)
 {
 	int **int_map;
 	char *line;
@@ -50,15 +44,15 @@ static int	**ctoi_map(char **map, int width, int height)
 	i = 0;
 	int_map = malloc(sizeof(int *) * height);
 	if (!int_map)
-		return (ctoi_map_ret(map, NULL));
+		return (free_arr(map), NULL);
 	while (map[i])
 	{
 		j = 0;
-		int_map[i] = malloc(sizeof(int) * width);
+		int_map[i] = malloc(sizeof(int) * width[i]);
 		if (!int_map[i])
-			return (free_irr(int_map, i), ctoi_map_ret(map, int_map));			
+			return (free_irr(int_map, i), free_arr(map), NULL);			
 		line = map[i];
-		while (j < width)
+		while (j < width[i])
 		{
 			while (is_space(*line))
 				line++;
@@ -69,7 +63,7 @@ static int	**ctoi_map(char **map, int width, int height)
 		}
 		i++;
 	}
-	return (ctoi_map_ret(map, int_map));
+	return (free_arr(map), int_map);
 }
 
 static int	count_numbers(char *line)
@@ -95,21 +89,27 @@ static int	count_numbers(char *line)
 t_map *create_map_struct(char **map_arr)
 {
 	t_map *map;
-	int width;
-	int height;
+	int i;
 
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (free_arr(map_arr), NULL);
-	width = count_numbers(map_arr[0]);
-	height = 0;
-	while (map_arr[height])
-		height++;
-	map->map = ctoi_map(map_arr, width, height);
+		
+	map->height = 0;
+	while (map_arr[map->height])
+		map->height++;
+	map->width = malloc(sizeof(int) * map->height);
+	if (!map->width)
+		return (free(map), NULL);
+	i = 0;
+	while (i < map->height)
+	{
+		map->width[i] = count_numbers(map_arr[i]);
+		i++;
+	}
+	map->map = ctoi_map(map_arr, map->width, map->height);
 	if (!map->map)
 		return (free(map), NULL);
-	map->width = width;
-	map->height = height;
 	return (map);
 }
 

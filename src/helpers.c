@@ -30,7 +30,7 @@ int	find_max_digits(t_map *map)
 	while (i < map->height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < map->width[i])
 		{
 			if (ft_nbrlen(map->map[i][j]) > max_digits)
 				max_digits = ft_nbrlen(map->map[i][j]);
@@ -54,7 +54,7 @@ void	print_colored_num(t_map *map, int num)
 	while (i < map->height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < map->width[i])
 		{
 			if (map->map[i][j] < min)
 				min = map->map[i][j];
@@ -77,13 +77,13 @@ void	print_map(t_map *map)
 	if (!map)
 		return ;
 	i = 0;
-	ft_printf("width: %d, height: %d\n", map->width, map->height);
+	ft_printf("width: %d, height: %d\n", map->width[i], map->height);
 	max_digits = find_max_digits(map);
 	ft_printf("max_digits: %d\n", max_digits);
 	while (i < map->height)
 	{
 		j = 0;
-		while (j < map->width)
+		while (j < map->width[i])
 		{
 			digits = ft_nbrlen(map->map[i][j]);
 			while (digits++ < max_digits)

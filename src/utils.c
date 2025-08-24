@@ -82,6 +82,7 @@ bool	is_positive_int(char *str)
 void	free_map(t_map **map)
 {
 	free_irr((*map)->map, (*map)->height);
+	free((*map)->width);
 	free(*map);
 	*map = NULL;
 }
