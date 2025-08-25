@@ -14,6 +14,7 @@ int	main()
 	t_map *map;
 	t_data data;
 
+	ft_bzero(&data, sizeof(t_data));
 	if (argc != 2)
 		return (ft_error("invalid number of arguments"));
 
@@ -25,11 +26,8 @@ int	main()
 	if (init_data(&data, &map) == -1)
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
-
-	// mlx_loop(data.mlx);
-
-	free_data(&data);
-	return (0);
+	mlx_event_handle(&data);
+	mlx_loop(data.mlx);
 }
 
 	

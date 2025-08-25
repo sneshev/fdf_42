@@ -20,10 +20,12 @@
 #define HEIGHT 500
 
 // map
-t_map *get_map(char *file_name);
+t_map	*get_map(char *file_name);
 
 // data
 int		init_data(t_data *data, t_map **map);
+
+void	mlx_event_handle(t_data *data);
 
 
 // utils
@@ -32,13 +34,16 @@ bool	is_number(char *str);
 bool	is_positive_int(char *str);
 int		ft_error(char *str);
 
-// helpers
-void	print_map(t_map *map);
+
 
 // freeing
 void	free_arr(char **arr);
 void	free_map(t_map **map);
 void	free_points(t_point **points, int height);
-void	free_data(t_data *data);
+void	free_data_exit(t_data *data);
+
+// helpers
+void	print_map(t_map *map);
+
 
 #endif

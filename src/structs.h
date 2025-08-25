@@ -1,6 +1,7 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+// make it coordinate[2] (X and Y)) and value (z)
 typedef struct s_point
 {
 	int	x;

@@ -33,13 +33,13 @@ void	free_map(t_map **map)
 	*map = NULL;
 }
 
-void	free_data(t_data *data)
+void	free_data_exit(t_data *data)
 {
 	if (data->img_info)
 		free(data->img_info);
-	if (data->img)
+	if (data->img && data->mlx)
 		mlx_destroy_image(data->mlx, data->img);
-	if (data->win)
+	if (data->win && data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 	{
@@ -48,5 +48,5 @@ void	free_data(t_data *data)
 	}
 	if (data->map)
 		free_map(&(data->map));
-
+	exit(0);
 }
