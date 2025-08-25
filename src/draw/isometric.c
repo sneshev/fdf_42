@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "../fdf.h"
 
 #define RED 0xFF0000
 #define GREEN 0x00FF00
@@ -27,7 +27,7 @@ void	draw_line(t_data data, t_point p1, t_point p2)
 	(void)p2;
 }
 
-void	draw_fdf(t_data data)
+void	draw_isometric_projection(t_data data)
 {
 	int		x;
 	int		y;

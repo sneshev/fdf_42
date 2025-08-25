@@ -27,7 +27,7 @@ int		init_mlx_data(t_data *data);
 void	mlx_event_handle(t_data *data);
 
 // draw
-void	draw_fdf(t_data data);
+void	draw_isometric_projection(t_data data);
 
 
 // utils
