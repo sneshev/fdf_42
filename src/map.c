@@ -33,7 +33,7 @@ static char	*fetch_rawmap(char *filename)
 		free(map);
 		free(line);
 		if (!tmp)
-			return (NULL);
+			return (close(fd), NULL);
 		map = tmp;
 		line = get_next_line(fd);
 	}

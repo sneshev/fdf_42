@@ -26,6 +26,7 @@ int	main()
 	if (init_data(&data, &map) == -1)
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
+	draw_fdf(data);
 	mlx_event_handle(&data);
 	mlx_loop(data.mlx);
 }
