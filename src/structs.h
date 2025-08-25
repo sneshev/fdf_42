@@ -8,6 +8,7 @@ typedef struct s_point
 {
 	int	coordinate[2];
 	int	value;
+	int	color;
 }	t_point;
 
 typedef struct s_map
