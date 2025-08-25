@@ -1,12 +1,13 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-// make it coordinate[2] (X and Y)) and value (z)
+#define X 0
+#define Y 1
+
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
+	int	coordinate[2];
+	int	value;
 }	t_point;
 
 typedef struct s_map

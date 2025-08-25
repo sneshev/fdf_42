@@ -63,9 +63,9 @@ static t_point	**ctot_map(char **map, int *width, int height)
 		{
 			while (is_space(*line))
 				line++;
-			points[i][j].x = j;
-			points[i][j].y = i;
-			points[i][j].z = ft_atoi(line);
+			points[i][j].coordinate[X] = j;
+			points[i][j].coordinate[Y] = i;
+			points[i][j].value = ft_atoi(line);
 			while (ft_isdigit(*line) || *line == '-')
 				line++;
 			j++;

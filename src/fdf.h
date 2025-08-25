@@ -27,6 +27,9 @@ int		init_data(t_data *data, t_map **map);
 
 void	mlx_event_handle(t_data *data);
 
+// draw
+void	draw_fdf(t_data data);
+
 
 // utils
 bool	is_space(char c);
