@@ -23,8 +23,7 @@
 t_map	*get_map(char *file_name);
 
 // data
-int		init_data(t_data *data, t_map **map);
-
+int		init_mlx_data(t_data *data);
 void	mlx_event_handle(t_data *data);
 
 // draw
