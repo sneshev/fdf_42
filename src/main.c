@@ -25,7 +25,10 @@ int	main()
 	if (init_data(&data, &map) == -1)
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
-	free_map(&map);
+
+	// mlx_loop(data.mlx);
+
+	free_data(&data);
 	return (0);
 }
 

@@ -39,5 +39,6 @@ void	print_map(t_map *map);
 void	free_arr(char **arr);
 void	free_map(t_map **map);
 void	free_points(t_point **points, int height);
+void	free_data(t_data *data);
 
 #endif
