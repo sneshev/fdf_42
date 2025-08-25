@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "../fdf.h"
 
 bool	is_valid_map(char **map);
 

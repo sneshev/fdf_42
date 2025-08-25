@@ -2,10 +2,10 @@
 #define FDF_H
 
 #include "../libft/libft.h"
-#include "ft_printf/ft_printf.h"
 # include "../minilibx/mlx.h"
 # include "../minilibx/mlx_int.h"
-#include "gnl/get_next_line.h"
+#include "utils/ft_printf/ft_printf.h"
+#include "utils/gnl/get_next_line.h"
 #include "structs.h"
 
 #include <stdio.h>

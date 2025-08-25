@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "../fdf.h"
 
 void	free_arr(char **arr)
 {

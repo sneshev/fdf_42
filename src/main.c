@@ -31,4 +31,8 @@ int	main()
 	mlx_loop(data.mlx);
 }
 
+/*
+	i can also do the orthographic projections ez:
 	
+	
+*/
