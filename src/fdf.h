@@ -28,6 +28,9 @@ void	mlx_event_handle(t_data *data);
 
 // draw
 void	draw_isometric_projection(t_data data);
+void	draw_line(t_data data, t_point p1, t_point p2);
+// void	draw_coordinate_line(t_data data, t_point p1, t_point p2);
+void	put_image_pixel(t_data data, int x, int y, int color);
 
 
 // utils

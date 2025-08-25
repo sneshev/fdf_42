@@ -48,3 +48,9 @@ bool	is_positive_int(char *str)
 	}
 	return (true);
 }
+
+int	ft_error(char *str)
+{
+	ft_printf("Error: %s\n", str);
+	return (1);
+}

@@ -1,10 +1,6 @@
 #include "fdf.h"
 
-int	ft_error(char *str)
-{
-	ft_printf("Error: %s\n", str);
-	return (1);
-}
+void	draw_bulgaria(t_data data);
 
 // int	main(int argc, char **argv)
 int	main()
@@ -26,7 +22,7 @@ int	main()
 	if (init_mlx_data(&data) == -1)
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
-	draw_isometric_projection(data);
+	draw_bulgaria(data);
 
 	mlx_event_handle(&data);
 	mlx_loop(data.mlx);
