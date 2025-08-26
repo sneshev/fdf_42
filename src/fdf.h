@@ -1,23 +1,23 @@
 #ifndef FDF_H
-#define FDF_H
+# define FDF_H
 
-#include "../libft/libft.h"
+# include "../libft/libft.h"
 # include "../minilibx/mlx.h"
 # include "../minilibx/mlx_int.h"
-#include "utils/ft_printf/ft_printf.h"
-#include "utils/gnl/get_next_line.h"
-#include "structs.h"
+# include "utils/ft_printf/ft_printf.h"
+# include "utils/gnl/get_next_line.h"
+# include "structs.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdbool.h>
-#include <fcntl.h>
-#include <math.h>
-#include <limits.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdbool.h>
+# include <fcntl.h>
+# include <math.h>
+# include <limits.h>
 
-#define WIDTH 500
-#define HEIGHT 500
+# define WIDTH 500
+# define HEIGHT 500
 
 // map
 t_map	*get_map(char *file_name);
@@ -30,6 +30,9 @@ void	mlx_event_handle(t_data *data);
 // draw
 void	draw_isometric_projection(t_data data);
 void	draw_line(t_data data, t_point p1, t_point p2);
+void	draw_front_view(t_map *map, t_mlxt mlxt);
+void	draw_side_view(t_map *map, t_mlxt mlxt);
+void	draw_top_view(t_map *map, t_mlxt mlxt);
 // void	draw_coordinate_line(t_data data, t_point p1, t_point p2);
 void	put_image_pixel(t_data data, int x, int y, int color);
 

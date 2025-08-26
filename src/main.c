@@ -1,9 +1,5 @@
 #include "fdf.h"
 
-void	draw_front_view(t_map *map, t_mlxt mlxt);
-void	draw_side_view(t_map *map, t_mlxt mlxt);
-void	draw_top_view(t_map *map, t_mlxt mlxt);
-
 // int	main(int argc, char **argv)
 int	main()
 {
