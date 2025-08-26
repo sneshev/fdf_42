@@ -1,6 +1,8 @@
 #include "fdf.h"
 
-void	draw_bulgaria(t_data data);
+void	draw_front_view(t_map *map, t_mlxt mlxt);
+void	draw_side_view(t_map *map, t_mlxt mlxt);
+void	draw_top_view(t_map *map, t_mlxt mlxt);
 
 // int	main(int argc, char **argv)
 int	main()
@@ -22,7 +24,7 @@ int	main()
 	if (init_mlx_data(&data) == -1)
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
-	draw_bulgaria(data);
+	draw_front_view(data.map, data.mlxt);
 
 	mlx_event_handle(&data);
 	mlx_loop(data.mlxt.mlx);

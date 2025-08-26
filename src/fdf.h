@@ -21,6 +21,7 @@
 
 // map
 t_map	*get_map(char *file_name);
+void	get_grid_data(t_map *map, int *grid_data);
 
 // data
 int		init_mlx_data(t_data *data);
