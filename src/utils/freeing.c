@@ -27,8 +27,7 @@ void	free_points(t_point **points, int height)
 
 void	free_map(t_map **map)
 {
-	free_points((*map)->points, (*map)->height);
-	free((*map)->width);
+	free_points((*map)->points, (*map)->height[REAL]);
 	free(*map);
 	*map = NULL;
 }

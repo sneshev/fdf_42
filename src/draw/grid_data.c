@@ -1,21 +1,5 @@
 #include "../fdf.h"
 
-static int	get_max_x(t_map *map)
-{
-	int	max_x;
-	int	i;
-
-	max_x = map->width[0];
-	i = 0;
-	while (i < map->height)
-	{
-		if (map->width[i] > max_x)
-			max_x = map->width[i];
-		i++;
-	}
-	return (max_x);
-}
-
 static int	get_max_z(t_map *map)
 {
 	int	max_z;
@@ -24,10 +8,10 @@ static int	get_max_z(t_map *map)
 
 	max_z = map->points[0][0].value;
 	i = 0;
-	while (i < map->height)
+	while (i < map->height[REAL])
 	{
 		j = 0;
-		while (j < map->width[i])
+		while (j < map->width[REAL])
 		{
 			if (map->points[i][j].value > max_z)
 				max_z = map->points[i][j].value;
@@ -46,10 +30,10 @@ static int	get_min_z(t_map *map)
 
 	min_z = map->points[0][0].value;
 	i = 0;
-	while (i < map->height)
+	while (i < map->height[REAL])
 	{
 		j = 0;
-		while (j < map->width[i])
+		while (j < map->width[REAL])
 		{
 			if (map->points[i][j].value < min_z)
 				min_z = map->points[i][j].value;
@@ -62,8 +46,8 @@ static int	get_min_z(t_map *map)
 
 void	get_grid_data(t_map *map, int *grid_data)
 {
-	grid_data[0] = get_max_x(map);
-	grid_data[1] = map->height;
+	grid_data[0] = map->width[REAL];
+	grid_data[1] = map->height[REAL];
 	grid_data[2] = get_min_z(map);
 	grid_data[3] = get_max_z(map);
 }

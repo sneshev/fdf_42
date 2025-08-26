@@ -3,6 +3,8 @@
 
 #define X 0
 #define Y 1
+#define REAL 0
+#define PIXEL 1
 
 typedef struct s_point
 {
@@ -14,10 +16,8 @@ typedef struct s_point
 typedef struct s_map
 {
 	t_point	**points;
-	int		*width;
-	int		height;
-	int		width_px;
-	int		height_px;
+	int		width[2]; // real, pixel
+	int		height[2]; // real, pixel
 }	t_map;
 
 typedef struct s_img_info

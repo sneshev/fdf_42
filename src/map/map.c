@@ -41,7 +41,7 @@ static char	*fetch_rawmap(char *filename)
 	return (map);
 }
 
-static t_point	**ctot_map(char **map, int *width, int height)
+static t_point	**ctot_map(char **map, int width, int height)
 {
 	t_point **points;
 	char *line;
@@ -55,11 +55,11 @@ static t_point	**ctot_map(char **map, int *width, int height)
 	while (map[i])
 	{
 		j = 0;
-		points[i] = malloc(sizeof(t_point) * width[i]);
+		points[i] = malloc(sizeof(t_point) * width);
 		if (!points[i])
 			return (free_points(points, i), free_arr(map), NULL);			
 		line = map[i];
-		while (j < width[i])
+		while (j < width)
 		{
 			while (is_space(*line))
 				line++;
@@ -100,29 +100,24 @@ static int	count_numbers(char *line)
 t_map *create_map_struct(char **map_arr)
 {
 	t_map *map;
-	int i;
 
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (free_arr(map_arr), NULL);
-		
-	map->height = 0;
-	while (map_arr[map->height])
-		map->height++;
-	map->width = malloc(sizeof(int) * map->height);
-	if (!map->width)
-		return (free_map(&map), free_arr(map_arr), NULL);
-	i = 0;
-	while (i < map->height)
+	map->width[REAL] = count_numbers(map_arr[0]);
+	map->height[REAL] = 0;
+	while (map_arr[map->height[REAL]])
 	{
-		map->width[i] = count_numbers(map_arr[i]);
-		i++;
+		if (count_numbers(map_arr[map->height[REAL]]) != map->width[REAL])
+			return (ft_error("invalid map"), free_map(&map), free_arr(map_arr), NULL);
+		map->height[REAL]++;
+
 	}
-	map->points = ctot_map(map_arr, map->width, map->height);
+	map->points = ctot_map(map_arr, map->width[REAL], map->height[REAL]);
 	if (!map->points)
 		return (free_map(&map), free_arr(map_arr), NULL);
-	map->width_px = WIDTH;
-	map->height_px = HEIGHT;
+	map->width[PIXEL] = WIDTH;
+	map->height[PIXEL] = HEIGHT;
 	return (map);
 }
 
