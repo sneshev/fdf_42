@@ -121,6 +121,8 @@ t_map *create_map_struct(char **map_arr)
 	map->points = ctot_map(map_arr, map->width, map->height);
 	if (!map->points)
 		return (free_map(&map), free_arr(map_arr), NULL);
+	map->width_px = WIDTH;
+	map->height_px = HEIGHT;
 	return (map);
 }
 

@@ -16,6 +16,8 @@ typedef struct s_map
 	t_point	**points;
 	int		*width;
 	int		height;
+	int		width_px;
+	int		height_px;
 }	t_map;
 
 typedef struct s_img_info
