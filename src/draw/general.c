@@ -15,9 +15,3 @@ void	put_image_pixel(t_data data, int x, int y, int color)
 	*(unsigned int *)pixel = color;
 }
 
-void	draw_coordinate_line(t_data data, t_point p1, t_point p2)
-{
-	(void)data;
-	(void)p1;
-	(void)p2;
-}
