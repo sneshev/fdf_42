@@ -26,13 +26,18 @@ typedef struct s_img_info
 	char	*addr;
 }	t_img_info;
 
+typedef struct s_mlxt
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	t_img_info	*img_info;
+}	t_mlxt;
+
 typedef struct s_data
 {
 	t_map		*map;
-	void		*mlx;
-	void		*win;
-	void		*img;
-	t_img_info	*img_info;
+	t_mlxt		mlxt;
 }	t_data;
 
 #endif

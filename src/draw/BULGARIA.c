@@ -40,5 +40,5 @@ void	draw_bulgaria(t_data data)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
+	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }

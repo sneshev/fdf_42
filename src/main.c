@@ -25,7 +25,7 @@ int	main()
 	draw_bulgaria(data);
 
 	mlx_event_handle(&data);
-	mlx_loop(data.mlx);
+	mlx_loop(data.mlxt.mlx);
 }
 
 /*

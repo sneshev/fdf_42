@@ -19,6 +19,6 @@ int	set_keyhooks(int key, t_data *data)
 void	mlx_event_handle(t_data *data)
 {
 	// mlx_hook(data->win, 4, 4, set_mouse_events, data);
-	mlx_hook(data->win, 17, 0, close_window, data);
-	mlx_key_hook(data->win, set_keyhooks, data);
+	mlx_hook(data->mlxt.win, 17, 0, close_window, data);
+	mlx_key_hook(data->mlxt.win, set_keyhooks, data);
 }

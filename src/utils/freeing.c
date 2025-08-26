@@ -35,16 +35,16 @@ void	free_map(t_map **map)
 
 void	free_data_exit(t_data *data)
 {
-	if (data->img_info)
-		free(data->img_info);
-	if (data->img && data->mlx)
-		mlx_destroy_image(data->mlx, data->img);
-	if (data->win && data->mlx)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->mlx)
+	if (data->mlxt.img_info)
+		free(data->mlxt.img_info);
+	if (data->mlxt.img && data->mlxt.mlx)
+		mlx_destroy_image(data->mlxt.mlx, data->mlxt.img);
+	if (data->mlxt.win && data->mlxt.mlx)
+		mlx_destroy_window(data->mlxt.mlx, data->mlxt.win);
+	if (data->mlxt.mlx)
 	{
-		mlx_destroy_display(data->mlx);
-		free(data->mlx);
+		mlx_destroy_display(data->mlxt.mlx);
+		free(data->mlxt.mlx);
 	}
 	if (data->map)
 		free_map(&(data->map));
