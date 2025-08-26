@@ -16,8 +16,8 @@
 # include <math.h>
 # include <limits.h>
 
-# define WIDTH 500
-# define HEIGHT 500
+# define WIDTH 1600
+# define HEIGHT 1000
 
 // map
 t_map	*get_map(char *file_name);

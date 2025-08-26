@@ -29,10 +29,10 @@ void	draw_front_view(t_data data)
 	
 	// draw_vertical_lines(data, grid_data);
 	// draw_horizontal_lines(data, grid_data);
-	start[X] = 10;
-	start[Y] = 15;
-	end[X] = 350;
-	end[Y] = 350;
+	start[X] = 619;
+	start[Y] = 36;
+	end[X] = 1599;
+	end[Y] = 999;
 	int color[2] = {WHITE, WHITE};
 	draw_coordinate_line(data, start, end, color);
 	

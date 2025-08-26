@@ -17,7 +17,6 @@ int	main()
 	map = get_map(argv[1]);
 	if (!map)
 		return (ft_error("failed to get map"));
-	printf("yay!\n");
 	print_map(map);
 	data.map = map;
 	if (init_mlx_data(&data) == -1)
