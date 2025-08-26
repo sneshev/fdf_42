@@ -134,3 +134,44 @@ void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2
 	}
 	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
+
+
+/* 
+	.Bresenham’s Line Algorithm produces a line that looks as straight as possible on a pixel grid
+
+	.Xiaolin Wu’s algorithm draws blended pixels for fractional coverage.
+	Makes lines look visually straight but is more complicated.
+	the algorithm draws partial brightness on neighboring pixels to smooth the staircase.
+	Anti-aliasing (optional, advanced)
+
+*/
+
+
+// // Bresenham’s
+// void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2])
+// {
+//     int dx = abs(coord2[X] - coord1[X]);
+//     int sx = coord1[X] < coord2[X] ? 1 : -1;
+//     int dy = -abs(coord2[Y] - coord1[Y]);
+//     int sy = coord1[Y] < coord2[Y] ? 1 : -1;
+//     int err = dx + dy; // error value
+
+//     while (1)
+//     {
+//         put_image_pixel(data, coord1[X], coord1[Y], color[X]);
+//         if (coord1[X] == coord2[X] && coord1[Y] == coord2[Y])
+//             break;
+//         int e2 = 2 * err;
+//         if (e2 >= dy)
+//         {
+//             err += dy;
+//             coord1[X] += sx;
+//         }
+//         if (e2 <= dx)
+//         {
+//             err += dx;
+//             coord1[Y] += sy;
+//         }
+//     }
+//  	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
+// }
