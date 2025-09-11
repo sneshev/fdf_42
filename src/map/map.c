@@ -118,6 +118,12 @@ t_map *create_map_struct(char **map_arr)
 		return (free_map(&map), free_arr(map_arr), NULL);
 	map->width[PIXEL] = WIDTH;
 	map->height[PIXEL] = HEIGHT;
+	map->width[PADDED] = WIDTH - (WIDTH * PADDING_PERC / 50);
+	map->height[PADDED] = HEIGHT - (HEIGHT * PADDING_PERC / 50);
+	map->x[MIN] = (WIDTH * PADDING_PERC / 100);
+	map->x[MAX] = WIDTH - (WIDTH * PADDING_PERC / 100);
+	map->y[MIN] = (HEIGHT * PADDING_PERC / 100);
+	map->y[MAX] = HEIGHT - (HEIGHT * PADDING_PERC / 100);
 	return (map);
 }
 

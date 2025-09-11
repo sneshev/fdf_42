@@ -1,6 +1,7 @@
 #include "fdf.h"
 
 void	draw_bulgaria(t_data data);
+void	draw_contour(t_data data);
 
 // int	main(int argc, char **argv)
 int	main()
@@ -22,6 +23,7 @@ int	main()
 	if (init_mlx_data(&data) == -1)
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
+	draw_contour(data);
 	draw_front_view(data);
 	// draw_bulgaria(data);
 

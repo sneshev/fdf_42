@@ -15,6 +15,8 @@
 bool	is_valid_coord(t_data data, int coord[2])
 {
 	(void)data;
+	printf("coord[X]: %d, coord[Y]: %d\n", coord[X], coord[Y]);
+	printf("data.map->width[PIXEL]: %d, data.map->height[PIXEL]: %d\n", data.map->width[PIXEL], data.map->height[PIXEL]);
 	if (coord[X] < 0)
 		return (write(1, "Error: drawing invalid line\n", 28), false);
 	if (coord[Y] < 0)
@@ -117,6 +119,10 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 	}
 }
 
+/*
+	.put the color inside the coord[] array
+	.add a argument for width of line (narrow, thick, ..)
+*/
 void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2])
 {
 	if (coord1[X] == coord2[X] && coord1[Y] == coord2[Y])

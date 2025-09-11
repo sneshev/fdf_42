@@ -19,6 +19,8 @@
 # define WIDTH 1600
 # define HEIGHT 1000
 
+# define PADDING_PERC 10
+
 // map
 t_map	*get_map(char *file_name);
 void	get_grid_data(t_data data, int *grid_data);
