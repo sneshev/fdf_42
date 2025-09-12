@@ -67,18 +67,22 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 
 	if (!is_valid_coord(data, start) || !is_valid_coord(data, end))
 		return ;
+	printf("start = {%d, %d}, end = {%d, %d}", start[X], start[Y], end[X], end[Y]);
 	step = (float)abs(start[X] - end[X]) / (float)abs(start[Y] - end[Y]);
 	i = 0;
 	curr_step = step;
 	while(start[Y] <= end[Y])
 	{
 		put_image_pixel(data, start[X], start[Y], color[X]);
+		printf("x->%d, y->%d\n", start[X], start[Y]);
 		if (step < 0)
 		{
 			while(i > curr_step)
 			{
 				if (start[Y] < end[Y])
 					start[Y]++;
+				else
+					start[Y]--;
 				put_image_pixel(data, start[X], start[Y], color[0]);
 				i--;
 			}
@@ -91,6 +95,8 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 			{
 				if (start[X] < end[X])
 					start[X]++;
+				else
+					start[X]--;
 				put_image_pixel(data, start[X], start[Y], color[0]);
 				i++;
 			}
