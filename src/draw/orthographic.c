@@ -25,13 +25,13 @@ void	draw_horizontal_lines(t_data data, int grid_data[4])
 	int		color[2] = {GREEN, GREEN};
 
 	map = data.map;
-	step_x = (float)map->width[PADDED] / (float)map->width[REAL];
-	step_y = (float)map->height[PADDED] / (float)map->height[REAL];
-	row = 0;
+	step_x = (float)map->width[PADDED] / (float)(map->width[REAL] - 1);
+	step_y = (float)map->height[PADDED] / (float)(grid_data[MAX_Z] - grid_data[MIN_Z]);
+	row = 5;
 	while(row < map->height[REAL])
 	{
-		i = 0;
 		printf("\nrow %d\n", row);
+		i = 0;
 		while (i < map->width[REAL])
 		{
 			cd[X] = map->x[MIN] + i * step_x;
@@ -46,8 +46,8 @@ void	draw_horizontal_lines(t_data data, int grid_data[4])
 			}
 		}
 		row++;
-		mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 	}
+	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
 
 void	draw_front_view(t_data data)
