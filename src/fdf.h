@@ -7,6 +7,7 @@
 # include "utils/ft_printf/ft_printf.h"
 # include "utils/gnl/get_next_line.h"
 # include "structs.h"
+# include "src/draw/colors.h"
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -18,8 +19,11 @@
 
 # define WIDTH 1600
 # define HEIGHT 1000
-
 # define PADDING_PERC 10
+
+# define COLOR_HIGH RED
+# define COLOR_GROUND WHITE
+# define COLOR_LOW DIM_WHITE
 
 // map
 t_map	*get_map(char *file_name);

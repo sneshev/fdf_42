@@ -11,6 +11,10 @@
 #define PIXEL 1
 #define PADDED 2
 
+#define HIGH 0
+#define GROUND 1
+#define LOW 2
+
 typedef struct s_point
 {
 	int	coordinate[2];
@@ -21,6 +25,7 @@ typedef struct s_point
 typedef struct s_map
 {
 	t_point	**points;
+	int		color[3]; // high, ground, low
 	int		width[3]; // real, pixel
 	int		height[3]; // real, pixel
 	int		x[2];
