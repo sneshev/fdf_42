@@ -46,7 +46,6 @@ void	draw_horizontal_lines(t_data data, int grid_data[4])
 			}
 		}
 		row++;
-		// sleep(1);
 		mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 	}
 }
