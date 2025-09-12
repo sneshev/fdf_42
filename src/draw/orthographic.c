@@ -4,7 +4,7 @@
 #define MIN_Z 2
 #define MAX_Z 3
 
-void	draw_vertical_lines(t_data data, t_map map, int color[2], int grid_data[4])
+static void	draw_vertical_lines(t_data data, t_map map, int color[2], int grid_data[4])
 {
 	float	step_x;
 	float	step_y;
@@ -33,7 +33,7 @@ void	draw_vertical_lines(t_data data, t_map map, int color[2], int grid_data[4])
 	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
 
-void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid_data[4])
+static void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid_data[4])
 {
 	float	step_x;
 	float	step_y;
@@ -72,10 +72,30 @@ void	draw_front_view(t_data data)
 	draw_vertical_lines(data, *data.map, color, grid_data);
 }
 
-// void	draw_side_view(t_data data)
-// {
-// 	(void)data;
-// }
+static void	copy_map_values(t_map map, t_map *new_map)
+{
+	new_map->height[0] = map.width[0];
+	new_map->height[1] = map.height[1];
+	new_map->height[2] = map.height[2];
+	new_map->width[0] = map.height[0];
+	new_map->width[1] = map.width[1];
+	new_map->width[2] = map.width[2];
+	new_map->x[0] = map.x[0];
+	new_map->x[1] = map.x[1];
+	new_map->y[0] = map.y[0];
+	new_map->y[1] = map.y[1];
+}
+
+void	draw_side_view(t_data data)
+{
+	t_map	map;
+	t_map	rotated_map;
+
+	map = *data.map;
+	rotated_map = map;
+
+
+}
 
 // void	draw_top_view(t_data data)
 // {
