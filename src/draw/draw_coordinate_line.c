@@ -15,8 +15,6 @@
 bool	is_valid_coord(t_data data, int coord[2])
 {
 	(void)data;
-	printf("coord[X]: %d, coord[Y]: %d\n", coord[X], coord[Y]);
-	printf("data.map->width[PIXEL]: %d, data.map->height[PIXEL]: %d\n", data.map->width[PIXEL], data.map->height[PIXEL]);
 	if (coord[X] < 0)
 		return (write(1, "Error: drawing invalid line\n", 28), false);
 	if (coord[Y] < 0)
@@ -36,14 +34,12 @@ static void	draw_vertical_line(t_data data, int start[2], int end[2], int color[
 	while(start[Y] != end[Y])
 	{
 		put_image_pixel(data, start[X], start[Y], color[0]);
-		ft_printf("start[X]: %d, start[Y]: %d\n", start[X], start[Y]);
 		if (start[Y] < end[Y])
 			start[Y]++;
 		else
 			start[Y]--;
 	}
 	put_image_pixel(data, start[X], start[Y], color[0]);
-	ft_printf("start[X]: %d, start[Y]: %d\n", start[X], start[Y]);
 }
 
 // start[Y] == end[Y]
@@ -54,14 +50,12 @@ static void	draw_horizontal_line(t_data data, int start[2], int end[2], int colo
 	while(start[X] != end[X])
 	{
 		put_image_pixel(data, start[X], start[Y], color[0]);
-		ft_printf("start[X]: %d, start[Y]: %d\n", start[X], start[Y]);
 		if (start[X] < end[X])
 			start[X]++;
 		else
 			start[X]--;
 	}
 	put_image_pixel(data, start[X], start[Y], color[0]);
-	ft_printf("start[X]: %d, start[Y]: %d\n", start[X], start[Y]);
 }
 
 // start[Y] < end[Y]
@@ -79,8 +73,6 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 	while(start[Y] <= end[Y])
 	{
 		put_image_pixel(data, start[X], start[Y], color[X]);
-		// mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
-		ft_printf("start[X]: %d, start[Y]: %d\n", start[X], start[Y]);
 		if (step < 0)
 		{
 			while(i > curr_step)
@@ -88,8 +80,6 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 				if (start[Y] < end[Y])
 					start[Y]++;
 				put_image_pixel(data, start[X], start[Y], color[0]);
-				// mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
-				ft_printf("start[X]: %d, start[Y]: %d\n", start[X], start[Y]);
 				i--;
 			}
 			curr_step -= curr_step;
@@ -102,8 +92,6 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 				if (start[X] < end[X])
 					start[X]++;
 				put_image_pixel(data, start[X], start[Y], color[0]);
-				// mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
-				ft_printf("start[X]: %d, start[Y]: %d\n", start[X], start[Y]);
 				i++;
 			}
 			curr_step += step;
@@ -115,7 +103,6 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 			start[X]++;
 		}
 		put_image_pixel(data, start[X], start[Y], color[0]);
-		// mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 	}
 }
 

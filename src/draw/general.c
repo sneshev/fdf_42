@@ -35,4 +35,5 @@ void	draw_contour(t_data data)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
