@@ -23,7 +23,7 @@
 
 // map
 t_map	*get_map(char *file_name);
-void	get_grid_data(t_data data, int *grid_data);
+void	get_grid_data(t_map map, int *grid_data);
 
 // data
 int		init_mlx_data(t_data *data);
@@ -31,10 +31,9 @@ void	mlx_event_handle(t_data *data);
 
 // draw
 void	draw_isometric_projection(t_data data);
-void	draw_line(t_data data, t_point p1, t_point p2);
-void	draw_front_view(t_data data);
-void	draw_side_view(t_data data);
-void	draw_top_view(t_data data);
+// void	draw_line(t_data data, t_point p1, t_point p2);
+void	draw_front_view(t_data data, t_map map);
+void	draw_ortho_view(t_data data, t_side side);
 // void	draw_coordinate_line(t_data data, t_point p1, t_point p2);
 void	put_image_pixel(t_data data, int x, int y, int color);
 void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2]);

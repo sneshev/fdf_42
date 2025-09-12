@@ -44,10 +44,10 @@ static int	get_min_z(t_map *map)
 		return (min_z);
 }
 
-void	get_grid_data(t_data data, int *grid_data)
+void	get_grid_data(t_map map, int *grid_data)
 {
-	grid_data[0] = data.map->width[REAL];
-	grid_data[1] = data.map->height[REAL];
-	grid_data[2] = get_min_z(data.map);
-	grid_data[3] = get_max_z(data.map);
+	grid_data[0] = map.width[REAL];
+	grid_data[1] = map.height[REAL];
+	grid_data[2] = get_min_z(&map);
+	grid_data[3] = get_max_z(&map);
 }

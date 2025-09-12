@@ -49,4 +49,12 @@ typedef struct s_data
 	t_mlxt		mlxt;
 }	t_data;
 
+typedef enum s_side
+{
+	FRONT,
+	LEFT,
+	BACK,
+	RIGHT
+}	t_side;
+
 #endif
