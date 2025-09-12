@@ -30,7 +30,7 @@ void	draw_contour(t_data data)
 		{
 			if (x == data.map->x[MIN] || x == data.map->x[MAX] - 1 ||
 					y == data.map->y[MIN] || y == data.map->y[MAX] - 1)
-				put_image_pixel(data, x, y, WHITE);
+				put_image_pixel(data, x, y, DIM_WHITE);
 			x++;
 		}
 		y++;

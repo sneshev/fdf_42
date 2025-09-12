@@ -27,7 +27,7 @@ void	draw_horizontal_lines(t_data data, int grid_data[4])
 	map = data.map;
 	step_x = (float)map->width[PADDED] / (float)(map->width[REAL] - 1);
 	step_y = (float)map->height[PADDED] / (float)(grid_data[MAX_Z] - grid_data[MIN_Z]);
-	row = 5;
+	row = 0;
 	while(row < map->height[REAL])
 	{
 		printf("\nrow %d\n", row);
