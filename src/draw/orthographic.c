@@ -4,7 +4,7 @@
 #define MIN_Z 2
 #define MAX_Z 3
 
-void	draw_vertical_lines(t_data data, t_map map, int grid_data[4])
+void	draw_vertical_lines(t_data data, t_map map, int color[2], int grid_data[4])
 {
 	float	step_x;
 	float	step_y;
@@ -12,7 +12,6 @@ void	draw_vertical_lines(t_data data, t_map map, int grid_data[4])
 	int		j;
 	int		cd[2];
 	int		ncd[2];
-	int		color[2] = {GREEN, GREEN};
 
 	step_x = (float)map.width[PADDED] / (float)(map.width[REAL] - 1);
 	step_y = (float)map.height[PADDED] / (float)(grid_data[MAX_Z] - grid_data[MIN_Z]);
@@ -34,7 +33,7 @@ void	draw_vertical_lines(t_data data, t_map map, int grid_data[4])
 	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
 
-void	draw_horizontal_lines(t_data data, t_map map, int grid_data[4])
+void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid_data[4])
 {
 	float	step_x;
 	float	step_y;
@@ -42,7 +41,6 @@ void	draw_horizontal_lines(t_data data, t_map map, int grid_data[4])
 	int		row;
 	int		cd[2];
 	int		ncd[2];
-	int		color[2] = {GREEN, GREEN};
 
 	step_x = (float)map.width[PADDED] / (float)(map.width[REAL] - 1);
 	step_y = (float)map.height[PADDED] / (float)(grid_data[MAX_Z] - grid_data[MIN_Z]);
@@ -67,14 +65,11 @@ void	draw_horizontal_lines(t_data data, t_map map, int grid_data[4])
 void	draw_front_view(t_data data)
 {
 	int	grid_data[4];
-	// int color[2] = {WHITE, WHITE};
+	int color[2] = {GREEN, GREEN};
 	
 	get_grid_data(data, grid_data);
-	// ft_printf("x: %d, y: %d, min_z: %d, max_z: %d\n", 
-		// grid_data[X], grid_data[Y], grid_data[MIN_Z], grid_data[MAX_Z]);
-	
-	draw_horizontal_lines(data, *data.map, grid_data);
-	draw_vertical_lines(data, *data.map, grid_data);
+	draw_horizontal_lines(data, *data.map, color, grid_data);
+	draw_vertical_lines(data, *data.map, color, grid_data);
 }
 
 // void	draw_side_view(t_data data)
