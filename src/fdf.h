@@ -7,7 +7,7 @@
 # include "utils/ft_printf/ft_printf.h"
 # include "utils/gnl/get_next_line.h"
 # include "structs.h"
-# include "src/draw/colors.h"
+# include "draw/colors.h"
 
 # include <stdio.h>
 # include <stdlib.h>

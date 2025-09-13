@@ -72,12 +72,20 @@ void	draw_front_view(t_data data, t_map map)
 	draw_vertical_lines(data, map, color, grid_data);
 }
 
-static void	copy_map_values(t_map map, t_map *new_map)
+static void	copy_map_values(t_map map, t_map *new_map, t_side side)
 {
-	new_map->height[REAL] = map.width[REAL];
+	if (side == LEFT || side == RIGHT)
+	{
+		new_map->height[REAL] = map.width[REAL];
+		new_map->width[REAL] = map.height[REAL];
+	}
+	else if (side == FRONT || side == BACK)
+	{
+		new_map->height[REAL] = map.height[REAL];
+		new_map->width[REAL] = map.width[REAL];
+	}
 	new_map->height[1] = map.height[1];
 	new_map->height[2] = map.height[2];
-	new_map->width[REAL] = map.height[REAL];
 	new_map->width[1] = map.width[1];
 	new_map->width[2] = map.width[2];
 	new_map->x[0] = map.x[0];
@@ -92,19 +100,16 @@ void	draw_ortho_view(t_data data, t_side side)
 	t_map	new_map;
 
 	map = *data.map;
-	if (side == BACK)
-		new_map = map;
-	else if (side == LEFT)
-	{
-		copy_map_values(map, &new_map);
-	}
-	else if (side == RIGHT)
-	{
-		copy_map_values(map, &new_map);
-	}
+	if (side == FRONT)
+		draw_front_view(data, map);
 	else
-		new_map = map;
-	draw_front_view(data, new_map);
+	{
+		copy_map_values(map, &new_map, side);
+		// new_map.points = alloc_newmap();	
+		// replace_points(map, &new_map, side);
+		draw_front_view(data, new_map);
+		// free_points(new_map.points, new_map.height[REAL]);
+	}
 }
 
 // void	draw_top_view(t_data data)
