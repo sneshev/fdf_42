@@ -24,7 +24,8 @@ int	main()
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
 	draw_contour(data);
-	draw_ortho_view(data, LEFT);
+	// draw_ortho_view(data, FRONT);
+	draw_ortho_view(data, BACK);
 	// draw_bulgaria(data);
 
 	mlx_event_handle(&data);
