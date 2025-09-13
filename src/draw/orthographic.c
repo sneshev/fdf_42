@@ -94,6 +94,44 @@ static void	copy_map_values(t_map map, t_map *new_map, t_side side)
 	new_map->y[1] = map.y[1];
 }
 
+static t_point	**alloc_newmap(t_map *map)
+{
+	t_point	**points;
+	int		width;
+	int		height;
+	int		i;
+
+	height = map->height[REAL];
+	width = map->width[REAL];
+	points = (t_point **)malloc(height * sizeof(t_point *));
+	if (!points)
+		return (NULL);
+	i = 0;
+	while (i < height)
+	{
+		points[i] = (t_point *)malloc(width * sizeof(t_point));
+		if (!points[i])
+			return (free_points(points, i), NULL);
+		i++;
+	}
+	return (points);
+}
+
+// static void	replace_points(t_map map, t_map *newmap, t_side side) // pffffff good luck with this one
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < map.height[REAL])
+// 	{
+// 		if (side == BACK)
+// 		{
+// 			newmap->points[]
+// 		}
+// 	}
+// }
+
 void	draw_ortho_view(t_data data, t_side side)
 {
 	t_map	map;
@@ -105,10 +143,10 @@ void	draw_ortho_view(t_data data, t_side side)
 	else
 	{
 		copy_map_values(map, &new_map, side);
-		// new_map.points = alloc_newmap();	
+		new_map.points = alloc_newmap(&new_map);	
 		// replace_points(map, &new_map, side);
-		draw_front_view(data, new_map);
-		// free_points(new_map.points, new_map.height[REAL]);
+		// draw_front_view(data, new_map);
+		free_points(new_map.points, new_map.height[REAL]);
 	}
 }
 
