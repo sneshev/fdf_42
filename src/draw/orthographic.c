@@ -27,7 +27,7 @@ static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2], i
 			j++;
 			ncd[X] = map.x[MIN] + col * step_x;
 			ncd[Y] = map.y[MAX] - (map.points[j][col].value - grid_data[MIN_Z]) * step_y;
-			color[0] = map.points[j][col].color;
+			color[1] = map.points[j][col].color;
 			draw_coordinate_line(data, cd, ncd, color);
 		}
 		col++;
