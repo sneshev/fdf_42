@@ -4,7 +4,7 @@
 #define MIN_Z 2
 #define MAX_Z 3
 
-static void	draw_vertical_lines(t_data data, t_map map, int color[2], int grid_data[4])
+static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2], int grid_data[4])
 {
 	float	step_x;
 	float	step_y;
@@ -23,16 +23,18 @@ static void	draw_vertical_lines(t_data data, t_map map, int color[2], int grid_d
 		{
 			cd[X] = map.x[MIN] + col * step_x;
 			cd[Y] = map.y[MAX] - (map.points[j][col].value - grid_data[MIN_Z]) * step_y;
+			color[0] = map.points[j][col].color;
 			j++;
 			ncd[X] = map.x[MIN] + col * step_x;
 			ncd[Y] = map.y[MAX] - (map.points[j][col].value - grid_data[MIN_Z]) * step_y;
+			color[0] = map.points[j][col].color;
 			draw_coordinate_line(data, cd, ncd, color);
 		}
 		col++;
 	}
 }
 
-static void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid_data[4])
+static void	draw_horizontal_lines(t_data data, t_map map, unsigned int color[2], int grid_data[4])
 {
 	float	step_x;
 	float	step_y;
@@ -51,9 +53,11 @@ static void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid
 		{
 			cd[X] = map.x[MIN] + i * step_x;
 			cd[Y] = map.y[MAX] - (map.points[row][i].value - grid_data[MIN_Z]) * step_y;
+			color[0] = map.points[row][i].color;
 			i++;
 			ncd[X] = map.x[MIN] + i * step_x;
 			ncd[Y] = map.y[MAX] - (map.points[row][i].value - grid_data[MIN_Z]) * step_y;
+			color[1] = map.points[row][i].color;
 			draw_coordinate_line(data, cd, ncd, color);
 		}
 		row++;
@@ -63,7 +67,7 @@ static void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid
 void	draw_front_view(t_data data, t_map map)
 {
 	int	grid_data[4];
-	int color[2] = {GREEN, GREEN};
+	unsigned int color[2];
 	
 	get_grid_data(map, grid_data);
 	draw_horizontal_lines(data, map, color, grid_data);

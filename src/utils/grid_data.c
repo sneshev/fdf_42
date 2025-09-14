@@ -1,5 +1,8 @@
 #include "../fdf.h"
 
+#define MIN_Z 2
+#define MAX_Z 3
+
 static int	get_max_z(t_map *map)
 {
 	int	max_z;

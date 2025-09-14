@@ -28,39 +28,47 @@ bool	is_valid_coord(t_data data, int coord[2])
 }
 
 // start[X] == end[X]
-static void	draw_vertical_line(t_data data, int start[2], int end[2], int color[2])
+static void	draw_vertical_line(t_data data, int cd[2], int end[2], unsigned int color[2])
 {
-	if (!is_valid_coord(data, start) || !is_valid_coord(data, end))
+	int start_y;
+
+	if (!is_valid_coord(data, cd) || !is_valid_coord(data, end))
 		return ;
-	while(start[Y] != end[Y])
+
+	start_y = cd[Y];
+	while(cd[Y] != end[Y])
 	{
-		put_image_pixel(data, start[X], start[Y], color[0]);
-		if (start[Y] < end[Y])
-			start[Y]++;
+		img_colrpix(data, cd, find_t(start_y, cd[Y], end[Y]), color);
+		if (cd[Y] < end[Y])
+			cd[Y]++;
 		else
-			start[Y]--;
+			cd[Y]--;
 	}
-	put_image_pixel(data, start[X], start[Y], color[0]);
+	img_colrpix(data, cd, find_t(start_y, cd[Y], end[Y]), color);
 }
 
 // start[Y] == end[Y]
-static void	draw_horizontal_line(t_data data, int start[2], int end[2], int color[2])
+static void	draw_horizontal_line(t_data data, int cd[2], int end[2], unsigned int color[2])
 {
-	if (!is_valid_coord(data, start) || !is_valid_coord(data, end))
+	int start_x;
+
+	if (!is_valid_coord(data, cd) || !is_valid_coord(data, end))
 		return ;
-	while(start[X] != end[X])
+
+	start_x = cd[X];
+	while(cd[X] != end[X])
 	{
-		put_image_pixel(data, start[X], start[Y], color[0]);
-		if (start[X] < end[X])
-			start[X]++;
+		img_colrpix(data, cd, find_t(start_x, cd[X], end[X]), color);
+		if (cd[X] < end[X])
+			cd[X]++;
 		else
-			start[X]--;
+			cd[X]--;
 	}
-	put_image_pixel(data, start[X], start[Y], color[0]);
+	img_colrpix(data, cd, find_t(start_x, cd[X], end[X]), color);
 }
 
 // start[Y] < end[Y]
-static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[2])
+static void	draw_diagonal_line(t_data data, int start[2], int end[2], unsigned int color[2])
 {
 	float	step;
 	float	curr_step;
@@ -116,8 +124,10 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 	.put the color inside the coord[] array
 	.add a argument for width of line (narrow, thick, ..)
 */
-void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2])
+void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], unsigned int color[2])
 {
+	unsigned int	tmp_color;
+
 	if (coord1[X] == coord2[X] && coord1[Y] == coord2[Y])
 		return ;
 	else if (coord1[X] == coord2[X])
@@ -127,7 +137,12 @@ void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2
 	else
 	{
 		if (coord1[Y] > coord2[Y])
-			draw_diagonal_line(data, coord2, coord1, color);
+			{
+				tmp_color = color[0];
+				color[0] = color[1];
+				color[1] = tmp_color;
+				draw_diagonal_line(data, coord2, coord1, color);
+			}
 		else
 			draw_diagonal_line(data, coord1, coord2, color);
 	}

@@ -39,8 +39,13 @@ void	draw_isometric_projection(t_data data);
 void	draw_front_view(t_data data, t_map map);
 void	draw_ortho_view(t_data data, t_side side);
 // void	draw_coordinate_line(t_data data, t_point p1, t_point p2);
-void	put_image_pixel(t_data data, int x, int y, int color);
-void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2]);
+void	put_image_pixel(t_data data, int x, int y, unsigned int color);
+void	img_colrpix(t_data data, int cd[2], double t, unsigned int color_range[2]);
+void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], unsigned int color[2]);
+
+// colors
+unsigned int	find_exact_color(double t, unsigned int color_low, unsigned int color_high);
+double			find_t(int val, int min, int max);
 
 
 // utils

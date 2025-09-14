@@ -1,5 +1,7 @@
 #include "../fdf.h"
 
+void	fill_colors(t_map *map);
+
 int	count_numbers(char *line)
 {
 	int count;
@@ -26,9 +28,10 @@ void	fill_point(t_point *point, int val, int i, int j)
 	point->coordinate[Y] = i;
 	point->coordinate[X] = j;
 	point->value = val;
-	point->color = WHITE;
+	// point->color = WHITE;
 }
 
+// assume valid map
 static t_point	**ctot_map(char **map, int width, int height)
 {
 	t_point **points;
@@ -81,6 +84,7 @@ t_map *create_map_struct(char **map_arr)
 	map->points = ctot_map(map_arr, map->width[REAL], map->height[REAL]);
 	if (!map->points)
 		return (free_map(&map), free_arr(map_arr), NULL);
+	fill_colors(map);
 	map->width[PIXEL] = WIDTH;
 	map->height[PIXEL] = HEIGHT;
 	map->width[PADDED] = WIDTH - (WIDTH * PADDING_PERC / 50);

@@ -17,19 +17,20 @@
 
 typedef struct s_point
 {
-	int	coordinate[2];
-	int	value;
-	int	color;
+	int				coordinate[2];
+	int				value;
+	unsigned int	color;
 }	t_point;
 
+// 	maybe i dont need color[3] in map becuse every point is filled with a color
 typedef struct s_map
 {
-	t_point	**points;
-	int		color[3]; // high, ground, low
-	int		width[3]; // real, pixel
-	int		height[3]; // real, pixel
-	int		x[2];
-	int		y[2];
+	t_point			**points;
+	unsigned int	color[3]; // high, ground, low
+	int				width[3]; // real, pixel
+	int				height[3]; // real, pixel
+	int				x[2];
+	int				y[2];
 }	t_map;
 
 typedef struct s_img_info
