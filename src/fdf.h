@@ -64,6 +64,7 @@ void	free_data_exit(t_data *data);
 
 // helpers
 void	print_map(t_map *map);
+void	print_colored_num_with_actual_color(t_point point);
 
 
 #endif

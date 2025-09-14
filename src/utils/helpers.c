@@ -67,6 +67,16 @@ void	print_colored_num(t_map *map, int num)
 	ft_printf("\033[%dm%d \033[0m", 31 + (int)((num - min) * 5.0 / (max - min)), num);
 }
 
+void	print_colored_num_with_actual_color(t_point point)
+{
+	unsigned int color = point.color;
+	int r = (color >> 16) & 0xFF;
+	int g = (color >> 8) & 0xFF;
+	int b = color & 0xFF;
+	
+	ft_printf("\033[38;2;%d;%d;%dm%d \033[0m", r, g, b, point.value);
+}
+
 void	print_map(t_map *map)
 {
 	int i;
@@ -88,7 +98,7 @@ void	print_map(t_map *map)
 			digits = ft_nbrlen(map->points[i][j].value);
 			while (digits++ < max_digits)
 				ft_printf(" ");
-			print_colored_num(map, map->points[i][j].value);
+			print_colored_num_with_actual_color(map->points[i][j]);
 			j++;
 		}
 		ft_printf("\n");
