@@ -38,13 +38,13 @@ static void	draw_vertical_line(t_data data, int cd[2], int end[2], unsigned int 
 	start_y = cd[Y];
 	while(cd[Y] != end[Y])
 	{
-		img_colrpix(data, cd, find_t(start_y, cd[Y], end[Y]), color);
+		img_colrpix(data, cd, find_t(cd[Y], start_y, end[Y]), color);
 		if (cd[Y] < end[Y])
 			cd[Y]++;
 		else
 			cd[Y]--;
 	}
-	img_colrpix(data, cd, find_t(start_y, cd[Y], end[Y]), color);
+	img_colrpix(data, cd, find_t(cd[Y], start_y, end[Y]), color);
 }
 
 // start[Y] == end[Y]
@@ -58,13 +58,13 @@ static void	draw_horizontal_line(t_data data, int cd[2], int end[2], unsigned in
 	start_x = cd[X];
 	while(cd[X] != end[X])
 	{
-		img_colrpix(data, cd, find_t(start_x, cd[X], end[X]), color);
+		img_colrpix(data, cd, find_t(cd[X], start_x, end[X]), color);
 		if (cd[X] < end[X])
 			cd[X]++;
 		else
 			cd[X]--;
 	}
-	img_colrpix(data, cd, find_t(start_x, cd[X], end[X]), color);
+	img_colrpix(data, cd, find_t(cd[X], start_x, end[X]), color);
 }
 
 // start[Y] < end[Y]

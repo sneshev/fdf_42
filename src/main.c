@@ -7,7 +7,7 @@ void	draw_contour(t_data data);
 int	main()
 {
 	int	argc = 2;
-	char *argv[] = {"./fdf", "test.fdf"};
+	char *argv[] = {"./fdf", "valid1.fdf"};
 	t_map *map;
 	t_data data;
 
@@ -25,7 +25,7 @@ int	main()
 
 	draw_contour(data);
 	// draw_ortho_view(data, FRONT);
-	draw_ortho_view(data, BACK);
+	draw_ortho_view(data, FRONT);
 	// draw_bulgaria(data);
 
 	mlx_event_handle(&data);
