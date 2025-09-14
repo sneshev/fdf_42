@@ -14,7 +14,8 @@
 
 bool	is_valid_coord(t_data data, int coord[2])
 {
-	(void)data;
+	if (coord[X] < 0 || coord[Y] < 0 || coord[X] >= data.map->width[PIXEL] || coord[Y] >= data.map->height[PIXEL])
+		printf("x = %d, y = %d\n", coord[X], coord[Y]);
 	if (coord[X] < 0)
 		return (write(1, "Error: drawing invalid line\n", 28), false);
 	if (coord[Y] < 0)
@@ -111,6 +112,7 @@ static void	draw_diagonal_line(t_data data, int start[2], int end[2], int color[
 }
 
 /*
+	DOES NOT IMAGE_TO_WIDNOW()
 	.put the color inside the coord[] array
 	.add a argument for width of line (narrow, thick, ..)
 */
@@ -129,7 +131,6 @@ void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], int color[2
 		else
 			draw_diagonal_line(data, coord1, coord2, color);
 	}
-	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
 
 

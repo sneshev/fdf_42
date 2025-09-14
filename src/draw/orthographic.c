@@ -22,15 +22,14 @@ static void	draw_vertical_lines(t_data data, t_map map, int color[2], int grid_d
 		while (j < map.height[REAL] - 1)
 		{
 			cd[X] = map.x[MIN] + col * step_x;
-			cd[Y] = map.y[MAX] - map.points[j][col].value * step_y;
+			cd[Y] = map.y[MAX] - (map.points[j][col].value - grid_data[MIN_Z]) * step_y;
 			j++;
 			ncd[X] = map.x[MIN] + col * step_x;
-			ncd[Y] = map.y[MAX] - map.points[j][col].value * step_y;
+			ncd[Y] = map.y[MAX] - (map.points[j][col].value - grid_data[MIN_Z]) * step_y;
 			draw_coordinate_line(data, cd, ncd, color);
 		}
 		col++;
 	}
-	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
 
 static void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid_data[4])
@@ -51,15 +50,14 @@ static void	draw_horizontal_lines(t_data data, t_map map, int color[2], int grid
 		while (i < map.width[REAL] - 1)
 		{
 			cd[X] = map.x[MIN] + i * step_x;
-			cd[Y] = map.y[MAX] - map.points[row][i].value * step_y;
+			cd[Y] = map.y[MAX] - (map.points[row][i].value - grid_data[MIN_Z]) * step_y;
 			i++;
 			ncd[X] = map.x[MIN] + i * step_x;
-			ncd[Y] = map.y[MAX] - map.points[row][i].value * step_y;
+			ncd[Y] = map.y[MAX] - (map.points[row][i].value - grid_data[MIN_Z]) * step_y;
 			draw_coordinate_line(data, cd, ncd, color);
 		}
 		row++;
 	}
-	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
 
 void	draw_front_view(t_data data, t_map map)
@@ -70,6 +68,7 @@ void	draw_front_view(t_data data, t_map map)
 	get_grid_data(map, grid_data);
 	draw_horizontal_lines(data, map, color, grid_data);
 	draw_vertical_lines(data, map, color, grid_data);
+	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }
 
 static void	copy_map_values(t_map map, t_map *new_map, t_side side)
