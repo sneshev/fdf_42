@@ -1,5 +1,5 @@
 #include "../fdf.h"
-#include "colors.h"
+#include "../colors/colors.h"
 
 // static void	swap_coords(int coord1[2], int coord2[2])
 // {

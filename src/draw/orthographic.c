@@ -1,5 +1,5 @@
 #include "../fdf.h"
-#include "colors.h"
+#include "../colors/colors.h"
 
 #define MIN_Z 2
 #define MAX_Z 3
