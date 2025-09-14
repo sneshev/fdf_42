@@ -68,54 +68,56 @@ static void	draw_horizontal_line(t_data data, int cd[2], int end[2], unsigned in
 }
 
 // start[Y] < end[Y]
-static void	draw_diagonal_line(t_data data, int start[2], int end[2], unsigned int color[2])
+static void	draw_diagonal_line(t_data data, int cd[2], int end[2], unsigned int color[2])
 {
 	float	step;
 	float	curr_step;
 	float	i;
+	int		start_y;
 
-	if (!is_valid_coord(data, start) || !is_valid_coord(data, end))
+	if (!is_valid_coord(data, cd) || !is_valid_coord(data, end))
 		return ;
-	step = (float)abs(start[X] - end[X]) / (float)abs(start[Y] - end[Y]);
+	step = (float)abs(cd[X] - end[X]) / (float)abs(cd[Y] - end[Y]);
 	i = 0;
 	curr_step = step;
-	while(start[Y] <= end[Y])
+	start_y = cd[Y];
+	while(cd[Y] <= end[Y])
 	{
-		put_image_pixel(data, start[X], start[Y], color[X]);
+		img_colrpix(data, cd, find_t(cd[Y], start_y, end[Y]), color);
 		if (step < 0)
 		{
 			while(i > curr_step)
 			{
-				if (start[Y] < end[Y])
-					start[Y]++;
+				if (cd[Y] < end[Y])
+					cd[Y]++;
 				else
-					start[Y]--;
-				put_image_pixel(data, start[X], start[Y], color[0]);
+					cd[Y]--;
+				img_colrpix(data, cd, find_t(cd[Y], start_y, end[Y]), color);
 				i--;
 			}
 			curr_step -= curr_step;
-			start[X]++;
+			cd[X]++;
 		}
 		else if (step > 0)
 		{
 			while(i < curr_step)
 			{
-				if (start[X] < end[X])
-					start[X]++;
+				if (cd[X] < end[X])
+					cd[X]++;
 				else
-					start[X]--;
-				put_image_pixel(data, start[X], start[Y], color[0]);
+					cd[X]--;
+				img_colrpix(data, cd, find_t(cd[Y], start_y, end[Y]), color);
 				i++;
 			}
 			curr_step += step;
-			start[Y]++;
+			cd[Y]++;
 		}
 		if (step == 0)
 		{
-			start[Y]++;
-			start[X]++;
+			cd[Y]++;
+			cd[X]++;
 		}
-		put_image_pixel(data, start[X], start[Y], color[0]);
+		img_colrpix(data, cd, find_t(cd[Y], start_y, end[Y]), color);
 	}
 }
 
