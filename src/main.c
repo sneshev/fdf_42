@@ -8,7 +8,7 @@ int	main()
 {
 	int	argc = 2;
 	// char *argv[] = {"./fdf", "valid0.fdf"};
-	char *argv[] = {"./fdf", "downloaded/pnp_flat.fdf"};
+	char *argv[] = {"./fdf", "downloaded/100-6.fdf"};
 	t_map *map;
 	t_data data;
 
@@ -25,9 +25,8 @@ int	main()
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
 	draw_contour(data);
-	// draw_ortho_view(data, FRONT);
-	draw_ortho_view(data, BACK);
-	// draw_bulgaria(data);
+
+	draw_ortho_view(data, LEFT);
 
 	mlx_event_handle(&data);
 	mlx_loop(data.mlxt.mlx);

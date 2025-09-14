@@ -3,4 +3,4 @@
 
 .points need to be able to receive color from the .fdf file 
 
-.
+.segfaults with wrong map (not rectangular)
