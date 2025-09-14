@@ -7,19 +7,9 @@ static unsigned int	get_point_color(t_point *point, int min, int max)
 {
 	double	t;
 
-	if (point->value < 0)
-	{
-		t = find_t(point->value, min, 0);
-		return (find_exact_color(t, COLOR_LOW, COLOR_GROUND)); //for now no gradient
-
-	}
-	else if (point->value == 0)
-		return (COLOR_GROUND);
-	else
-	{
-		t = find_t(point->value, 0, max);
-		return (find_exact_color(t, COLOR_GROUND, COLOR_HIGH));	
-	}
+	// if (point->value < 0) // i can make it use a different color for underground but also need to change draw_coord() because it needs to go THROUGH the ground's color
+	t = find_t(point->value, min, max);
+	return (find_exact_color(t, COLOR_GROUND, COLOR_HIGH));	
 }
 
 
