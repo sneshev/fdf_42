@@ -8,7 +8,7 @@ int	main()
 {
 	int	argc = 2;
 	// char *argv[] = {"./fdf", "valid0.fdf"};
-	char *argv[] = {"./fdf", "downloaded/100-6.fdf"};
+	char *argv[] = {"./fdf", "valid1.fdf"};
 	t_map *map;
 	t_data data;
 

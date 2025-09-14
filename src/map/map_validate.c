@@ -28,6 +28,7 @@ bool	is_valid_number(char *str)
 	return (false);
 }
 
+// doesnt check rectangularity
 bool	is_valid_line(char *line)
 {
 	int j;
