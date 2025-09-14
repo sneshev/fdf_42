@@ -8,7 +8,7 @@ int	main()
 {
 	int	argc = 2;
 	// char *argv[] = {"./fdf", "valid0.fdf"};
-	char *argv[] = {"./fdf", "downloaded/Japan.L.fdf"};
+	char *argv[] = {"./fdf", "downloaded/pnp_flat.fdf"};
 	t_map *map;
 	t_data data;
 
@@ -26,7 +26,7 @@ int	main()
 
 	draw_contour(data);
 	// draw_ortho_view(data, FRONT);
-	draw_ortho_view(data, FRONT);
+	draw_ortho_view(data, BACK);
 	// draw_bulgaria(data);
 
 	mlx_event_handle(&data);
