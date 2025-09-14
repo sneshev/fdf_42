@@ -25,7 +25,7 @@ int	main()
 
 	draw_contour(data);
 	// draw_ortho_view(data, FRONT);
-	draw_ortho_view(data, LEFT);
+	draw_ortho_view(data, BACK);
 	// draw_bulgaria(data);
 
 	mlx_event_handle(&data);
