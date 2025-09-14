@@ -17,8 +17,8 @@
 # include <math.h>
 # include <limits.h>
 
-# define WIDTH 800
-# define HEIGHT 500
+# define WIDTH 800 * 2
+# define HEIGHT 500 * 2
 # define PADDING_PERC 10
 
 # define COLOR_HIGH RED
