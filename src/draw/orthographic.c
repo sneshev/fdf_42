@@ -141,10 +141,10 @@ static void	replace_points(t_map map, t_map *newmap, t_side side) // pffffff goo
 		{
 			if (side == BACK)
 				newmap->points[height - i - 1][width - j - 1] = map.points[i][j];
-			// if (side == LEFT)
-				// newmap->points[][] = map.points[i][j];
-			// if (side == RIGHT)
-				// newmap->points[][] = map.points[i][j];
+			if (side == LEFT)
+				newmap->points[width - j - 1][i] = map.points[i][j];
+			if (side == RIGHT)
+				newmap->points[j][height - i - 1] = map.points[i][j];
 			j++;	
 		}
 		i++;
