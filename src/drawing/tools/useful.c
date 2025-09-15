@@ -1,5 +1,5 @@
-#include "../fdf.h"
-#include "../colors/colors.h"
+#include "../../fdf.h"
+#include "../../colors/colors.h"
 
 // draw the contour of the canvas
 void	draw_contour(t_data data)

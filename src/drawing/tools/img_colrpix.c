@@ -1,4 +1,4 @@
-#include "../fdf.h"
+#include "../../fdf.h"
 
 void	put_image_pixel(t_data data, int x, int y, unsigned int color)
 {
