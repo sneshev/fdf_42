@@ -5,6 +5,8 @@ void rotate_points_x(t_map *map, float th)
 {
 	(void)map;
 	(void)th;
+	// map->points[0][0].value = 4;
+	// map->points[0][0].color = GREEN;
 }
 
 void rotate_points_y(t_map *map, float th)

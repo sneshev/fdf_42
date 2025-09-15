@@ -25,8 +25,8 @@ int	main()
 		return (free_map(&map), ft_error("failed to init data"), 1);
 
 	draw_contour(data);
-
 	// draw_ortho_view(data, TOP);
+
 	t_rotation rot;
 	rot.xt = 0;
 	rot.yt = 0;

@@ -6,6 +6,7 @@
 // map rotation utils 
 t_point	**alloc_newmap(t_map *map);
 void	replace_points(t_map map, t_map *newmap, t_side side);
+void	copy_map_values(t_map map, t_map *new_map, t_side side);
 
 //rotation
 void rotate_points_x(t_map *map, float t);
