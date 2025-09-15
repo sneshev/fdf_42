@@ -125,6 +125,8 @@ static void	draw_diagonal_line(t_data data, int cd[2], int end[2], unsigned int 
 	DOES NOT IMAGE_TO_WIDNOW()
 	.put the color inside the coord[] array
 	.add a argument for width of line (narrow, thick, ..)
+
+	.color can be part of the coord1[] and coord2[] arrays. They will then be unsigned int arrays, thats okay
 */
 void	draw_coordinate_line(t_data data, int coord1[2], int coord2[2], unsigned int color[2])
 {

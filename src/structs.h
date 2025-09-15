@@ -60,7 +60,8 @@ typedef enum s_side
 	FRONT,
 	LEFT,
 	BACK,
-	RIGHT
+	RIGHT,
+	TOP
 }	t_side;
 
 #endif

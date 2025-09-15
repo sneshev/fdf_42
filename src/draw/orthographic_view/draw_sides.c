@@ -1,8 +1,11 @@
-#include "../fdf.h"
-#include "../colors/colors.h"
+#include "../../fdf.h"
+#include "../../colors/colors.h"
 
 #define MIN_Z 2
 #define MAX_Z 3
+
+t_point	**alloc_newmap(t_map *map);
+void	replace_points(t_map map, t_map *newmap, t_side side);
 
 static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2], int grid_data[4])
 {
@@ -97,64 +100,7 @@ static void	copy_map_values(t_map map, t_map *new_map, t_side side)
 	new_map->y[1] = map.y[1];
 }
 
-static t_point	**alloc_newmap(t_map *map)
-{
-	t_point	**points;
-	int		width;
-	int		height;
-	int		i;
-
-	height = map->height[REAL];
-	width = map->width[REAL];
-	points = (t_point **)malloc(height * sizeof(t_point *));
-	if (!points)
-		return (NULL);
-	i = 0;
-	while (i < height)
-	{
-		points[i] = (t_point *)malloc(width * sizeof(t_point));
-		if (!points[i])
-			return (free_points(points, i), NULL);
-		i++;
-	}
-	return (points);
-}
-
-/*
-
-	0 0 0 0 1 1 
-	0 0 0 0 1 1 
-	0 0 1 1 2 2 
-	0 0 1 1 2 2 
-
-*/
-
-static void	replace_points(t_map map, t_map *newmap, t_side side) // pffffff good luck with this one
-{
-	int	i;
-	int	j;
-	int	height = map.height[REAL];
-	int	width = map.width[REAL];
-	
-	i = 0;
-	while (i < height)
-	{
-		j = 0;
-		while (j < width)
-		{
-			if (side == BACK)
-				newmap->points[height - i - 1][width - j - 1] = map.points[i][j];
-			if (side == LEFT)
-				newmap->points[width - j - 1][i] = map.points[i][j];
-			if (side == RIGHT)
-				newmap->points[j][height - i - 1] = map.points[i][j];
-			j++;	
-		}
-		i++;
-	}
-}
-
-void	draw_ortho_view(t_data data, t_side side)
+void	draw_side_view(t_data data, t_side side)
 {
 	t_map	map;
 	t_map	new_map;
@@ -172,8 +118,3 @@ void	draw_ortho_view(t_data data, t_side side)
 		free_points(new_map.points, new_map.height[REAL]);
 	}
 }
-
-// void	draw_top_view(t_data data)
-// {
-// 	(void)data;
-// }

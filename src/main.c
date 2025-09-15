@@ -8,7 +8,7 @@ int	main()
 {
 	int	argc = 2;
 	// char *argv[] = {"./fdf", "valid0.fdf"};
-	char *argv[] = {"./fdf", "test.fdf"};
+	char *argv[] = {"./fdf", "valid1.fdf"};
 	t_map *map;
 	t_data data;
 
@@ -26,7 +26,7 @@ int	main()
 
 	draw_contour(data);
 
-	draw_ortho_view(data, LEFT);
+	draw_ortho_view(data, TOP);
 
 	mlx_event_handle(&data);
 	mlx_loop(data.mlxt.mlx);
