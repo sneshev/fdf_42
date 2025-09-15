@@ -1,5 +1,6 @@
 #include "../../fdf.h"
 
+// make data and map pointers bro..
 static void	draw_horizontal_lines(t_data data, t_map map, unsigned int color[2])
 {
 	float	step_x;
@@ -30,6 +31,7 @@ static void	draw_horizontal_lines(t_data data, t_map map, unsigned int color[2])
 	}
 }
 
+// make data and map pointers bro..
 static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2])
 {
 	float	step_x;
@@ -61,12 +63,12 @@ static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2])
 
 }
 
-void	draw_top_view(t_data data)
+void	draw_top_view(t_data data, t_map *map)
 {
 	(void)data;
 	unsigned int color[2];
 
-	draw_horizontal_lines(data, *data.map, color);
-	draw_vertical_lines(data, *data.map, color);
+	draw_horizontal_lines(data, *map, color);
+	draw_vertical_lines(data, *map, color);
 	mlx_put_image_to_window(data.mlxt.mlx, data.mlxt.win, data.mlxt.img, 0, 0);
 }

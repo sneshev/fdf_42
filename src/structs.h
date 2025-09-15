@@ -1,8 +1,11 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include <stdbool.h>
+
 # define X 0
 # define Y 1
+# define Z 2
 
 # define MIN 0
 # define MAX 1
@@ -21,6 +24,14 @@ typedef struct s_point
 	int				value;
 	unsigned int	color;
 }	t_point;
+
+typedef struct s_rotation
+{
+	// bool	is_rotated;
+	float	xt;
+	float	yt;
+	float	zt;
+}	t_rotation;
 
 // 	maybe i dont need color[3] in map becuse every point is filled with a color
 typedef struct s_map

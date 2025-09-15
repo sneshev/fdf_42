@@ -7,6 +7,7 @@
 t_point	**alloc_newmap(t_map *map);
 void	replace_points(t_map map, t_map *newmap, t_side side);
 
+// make data and map pointers bro..
 static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2], int grid_data[4])
 {
 	float	step_x;
@@ -37,6 +38,7 @@ static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2], i
 	}
 }
 
+// make data and map pointers bro..
 static void	draw_horizontal_lines(t_data data, t_map map, unsigned int color[2], int grid_data[4])
 {
 	float	step_x;
@@ -67,6 +69,7 @@ static void	draw_horizontal_lines(t_data data, t_map map, unsigned int color[2],
 	}
 }
 
+// make data and map pointers bro..
 void	draw_front_view(t_data data, t_map map)
 {
 	int	grid_data[4];

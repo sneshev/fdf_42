@@ -34,7 +34,7 @@ int		init_mlx_data(t_data *data);
 void	mlx_event_handle(t_data *data);
 
 // draw
-void	draw_isometric_projection(t_data data);
+void	draw_isometric_projection(t_data data, t_map map, t_rotation rot);
 // void	draw_line(t_data data, t_point p1, t_point p2);
 void	draw_front_view(t_data data, t_map map);
 void	draw_ortho_view(t_data data, t_side side);
