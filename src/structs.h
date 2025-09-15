@@ -29,8 +29,8 @@ typedef struct s_map
 	unsigned int	color[3]; // high, ground, low
 	int				width[3]; // real, pixel
 	int				height[3]; // real, pixel
-	int				x[2];
-	int				y[2];
+	int				x[2]; // min, max (for the part of the screen)
+	int				y[2]; // min, max (for the part of the screen)
 }	t_map;
 
 typedef struct s_img_info
