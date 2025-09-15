@@ -1,6 +1,11 @@
 #include "../fdf.h"
 
 #define ESC 65307 
+# define L 108
+# define R 114
+# define F 102
+# define B 98
+# define T 116
 
 int	close_window(t_data *data)
 {
@@ -10,9 +15,18 @@ int	close_window(t_data *data)
 
 int	set_keyhooks(int key, t_data *data)
 {
-	(void)data;
 	if (key == ESC)
 		free_data_exit(data);
+	if (key == L)
+		draw_ortho_view(*data, LEFT);
+	if (key == R)
+		draw_ortho_view(*data, RIGHT);
+	if (key == F)
+		draw_ortho_view(*data, FRONT);
+	if (key == B)
+		draw_ortho_view(*data, BACK);
+	if (key == T)
+		draw_ortho_view(*data, TOP);
 	return (1);
 }
 
