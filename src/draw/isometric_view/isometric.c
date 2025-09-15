@@ -1,4 +1,4 @@
-#include "../fdf.h"
+#include "../../fdf.h"
 
 void	draw_isometric_projection(t_data data)
 {
