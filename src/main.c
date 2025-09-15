@@ -26,7 +26,12 @@ int	main()
 
 	draw_contour(data);
 
-	draw_ortho_view(data, TOP);
+	// draw_ortho_view(data, TOP);
+	t_rotation rot;
+	rot.xt = 0;
+	rot.yt = 0;
+	rot.zt = 0;
+	draw_isometric_projection(data, *data.map, rot);
 
 	mlx_event_handle(&data);
 	mlx_loop(data.mlxt.mlx);
