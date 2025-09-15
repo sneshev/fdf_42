@@ -1,5 +1,6 @@
 #include "../../fdf.h"
 
+// needs to have .width and .height already
 t_point	**alloc_newmap(t_map *map)
 {
 	t_point	**points;
@@ -23,6 +24,7 @@ t_point	**alloc_newmap(t_map *map)
 	return (points);
 }
 
+// rotates the map
 void	replace_points(t_map map, t_map *newmap, t_side side)
 {
 	int	i;

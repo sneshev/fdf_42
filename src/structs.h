@@ -1,19 +1,19 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-#define X 0
-#define Y 1
+# define X 0
+# define Y 1
 
-#define MIN 0
-#define MAX 1
+# define MIN 0
+# define MAX 1
 
-#define REAL 0
-#define PIXEL 1
-#define PADDED 2
+# define REAL 0
+# define PIXEL 1
+# define PADDED 2
 
-#define HIGH 0
-#define GROUND 1
-#define LOW 2
+# define HIGH 0
+# define GROUND 1
+# define LOW 2
 
 typedef struct s_point
 {
