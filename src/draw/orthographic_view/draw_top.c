@@ -32,9 +32,33 @@ static void	draw_horizontal_lines(t_data data, t_map map, unsigned int color[2])
 
 static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2])
 {
-	(void)data;
-	(void)map;
-	(void)color;
+	float	step_x;
+	float	step_y;
+	int		col;
+	int		j;
+	int		cd[2];
+	int		ncd[2];
+
+	step_x = (float)map.width[PADDED] / (float)(map.width[REAL] - 1);
+	step_y = (float)map.height[PADDED] / (float)(map.height[REAL] - 1);
+	col = 0;
+	while (col < map.width[REAL])
+	{
+		j = 0;
+		while (j < map.height[REAL] - 1)
+		{
+			cd[X] = map.x[MIN] + col * step_x;
+			cd[Y] = map.y[MIN] + j * step_y;
+			color[0] = map.points[j][col].color;
+			j++;
+			ncd[X] = map.x[MIN] + col * step_x;
+			ncd[Y] = map.y[MIN] + j * step_y;
+			color[1] = map.points[j][col].color;
+			draw_coordinate_line(data, cd, ncd, color);
+		}
+		col++;
+	}
+
 }
 
 void	draw_top_view(t_data data)
