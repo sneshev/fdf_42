@@ -28,7 +28,7 @@ int	main()
 	// draw_ortho_view(data, TOP);
 
 	t_rotation rot;
-	rot.xt = 0;
+	rot.xt = 30;
 	rot.yt = 0;
 	rot.zt = 0;
 	draw_isometric_projection(data, *data.map, rot);

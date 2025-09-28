@@ -31,7 +31,7 @@ LIBS = -L$(LIBFT_PATH) -lft -L$(MLIBX_PATH) -lmlx -lXext -lX11
 
 # $(NAME): $(OBJS) libft mlibx   <- relinks
 $(NAME): $(OBJS) $(LIBFT_PATH)/libft.a $(MLIBX_PATH)/libmlx.a
-	$(CC) $(OBJS) $(LIBS) -o $(NAME)
+	$(CC) $(OBJS) $(LIBS) -o $(NAME) -lm
 
 clean:
 	rm -rf $(OBJS_DIR) $(NAME)

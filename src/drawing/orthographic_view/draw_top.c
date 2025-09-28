@@ -60,7 +60,6 @@ static void	draw_vertical_lines(t_data data, t_map map, unsigned int color[2])
 		}
 		col++;
 	}
-
 }
 
 void	draw_top_view(t_data data, t_map *map)

@@ -3,6 +3,11 @@
 
 # include "../fdf.h"
 
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
+
+
 // map rotation utils 
 t_point	**alloc_newmap(t_map *map);
 void	replace_points(t_map map, t_map *newmap, t_side side);
